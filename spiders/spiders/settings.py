@@ -1,4 +1,4 @@
-# Scrapy settings for scrapytuturial project
+# Scrapy settings for spiders project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -7,14 +7,14 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = "scrapytuturial"
+BOT_NAME = "spiders"
 
-SPIDER_MODULES = ["scrapytuturial.spiders"]
-NEWSPIDER_MODULE = "scrapytuturial.spiders"
+SPIDER_MODULES = ["spiders.spiders"]
+NEWSPIDER_MODULE = "spiders.spiders"
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = "scrapytuturial (+http://www.yourdomain.com)"
+#USER_AGENT = "spiders (+http://www.yourdomain.com)"
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -45,13 +45,13 @@ ROBOTSTXT_OBEY = True
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    "scrapytuturial.middlewares.ScrapytuturialSpiderMiddleware": 543,
+#    "spiders.middlewares.SpidersSpiderMiddleware": 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    "scrapytuturial.middlewares.ScrapytuturialDownloaderMiddleware": 543,
+#    "spiders.middlewares.SpidersDownloaderMiddleware": 543,
 #}
 
 # Enable or disable extensions
@@ -62,9 +62,13 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    "scrapytuturial.pipelines.ScrapytuturialPipeline": 300,
-#}
+ITEM_PIPELINES = {
+    "spiders.pipelines.TextPipeline": 300,
+    "spiders.pipelines.MongoDBPipeline": 400,
+
+}
+MONGODB_CONNECTION_STRING = 'localhost'
+MONGODB_DATABASE = 'spiders'
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
