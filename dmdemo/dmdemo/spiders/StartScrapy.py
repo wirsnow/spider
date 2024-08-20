@@ -1,3 +1,3 @@
 from scrapy.cmdline import execute
-spider = 'quotes'
+spider = 'httpbin'
 execute(f'scrapy crawl {spider}'.split())

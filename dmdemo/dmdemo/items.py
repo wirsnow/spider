@@ -6,8 +6,7 @@
 import scrapy
 
 
-class QuoteItem(scrapy.Item):
+class DmdemoItem(scrapy.Item):
     # define the fields for your item here like:
-    quote = scrapy.Field()
-    author = scrapy.Field()
-    tags = scrapy.Field()
+    # name = scrapy.Field()
+    pass

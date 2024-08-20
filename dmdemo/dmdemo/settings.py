@@ -1,4 +1,4 @@
-# Scrapy settings for spiders project
+# Scrapy settings for dmdemo project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -7,14 +7,14 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = "spiders"
+BOT_NAME = "dmdemo"
 
-SPIDER_MODULES = ["spiders.spiders"]
-NEWSPIDER_MODULE = "spiders.spiders"
+SPIDER_MODULES = ["dmdemo.spiders"]
+NEWSPIDER_MODULE = "dmdemo.spiders"
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = "spiders (+http://www.yourdomain.com)"
+#USER_AGENT = "dmdemo (+http://www.yourdomain.com)"
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -45,14 +45,14 @@ ROBOTSTXT_OBEY = True
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    "spiders.middlewares.SpidersSpiderMiddleware": 543,
+#    "dmdemo.middlewares.DmdemoSpiderMiddleware": 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    "spiders.middlewares.SpidersDownloaderMiddleware": 543,
-#}
+DOWNLOADER_MIDDLEWARES = {
+   "dmdemo.middlewares.RandomUserAgentMiddleware": 543,
+}
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
@@ -62,13 +62,9 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-ITEM_PIPELINES = {
-    "spiders.pipelines.TextPipeline": 300,
-    "spiders.pipelines.MongoDBPipeline": 400,
-
-}
-MONGODB_CONNECTION_STRING = 'localhost'
-MONGODB_DATABASE = 'spiders'
+#ITEM_PIPELINES = {
+#    "dmdemo.pipelines.DmdemoPipeline": 300,
+#}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
